@@ -1,0 +1,170 @@
+[
+  {
+    "name": "iPhone 13 Pro Max",
+    "price": 1499.99,
+    "description": "The latest iPhone model with advanced camera features and A15 Bionic chip.",
+    "ratings": 0,
+    "images": [
+      {
+        "public_id": "iphone-13-pro-max-1",
+        "url": "https://example.com/images/iphone-13-pro-max-1.jpg"
+      },
+      {
+        "public_id": "iphone-13-pro-max-2",
+        "url": "https://example.com/images/iphone-13-pro-max-2.jpg"
+      }
+    ],
+    "category": "Phone",
+    "seller": "Apple Inc.",
+    "stock": 100,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "MacBook Pro",
+    "price": 1999.99,
+    "description": "Powerful laptop with M1 chip and 16GB RAM.",
+    "ratings": 4.8,
+    "images": [
+      {
+        "public_id": "macbook-pro-1",
+        "url": "https://example.com/images/macbook-pro-1.jpg"
+      },
+      {
+        "public_id": "macbook-pro-2",
+        "url": "https://example.com/images/macbook-pro-2.jpg"
+      }
+    ],
+    "category": "Laptop",
+    "seller": "Apple Inc.",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Sony A7 III",
+    "price": 1999.99,
+    "description": "Full-frame mirrorless camera with 24.2 MP sensor.",
+    "ratings": 4.6,
+    "images": [
+      {
+        "public_id": "sony-a7-iii-1",
+        "url": "https://example.com/images/sony-a7-iii-1.jpg"
+      },
+      {
+        "public_id": "sony-a7-iii-2",
+        "url": "https://example.com/images/sony-a7-iii-2.jpg"
+      }
+    ],
+    "category": "Camera",
+    "seller": "Sony Corporation",
+    "stock": 20,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Nike Air Force 1",
+    "price": 99.99,
+    "description": "Classic sneakers with leather upper and air-cushioned sole.",
+    "ratings": 4.9,
+    "images": [
+      {
+        "public_id": "nike-air-force-1-1",
+        "url": "https://example.com/images/nike-air-force-1-1.jpg"
+      },
+      {
+        "public_id": "nike-air-force-1-2",
+        "url": "https://example.com/images/nike-air-force-1-2.jpg"
+      }
+    ],
+    "category": "Clothes/Shoes",
+    "seller": "Nike Inc.",
+    "stock": 200,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Samsung Galaxy S21",
+    "price": 799.99,
+    "description": "Flagship smartphone with 6.2-inch display and 5G support.",
+    "ratings": 4.7,
+    "images": [
+      {
+        "public_id": "samsung-galaxy-s21-1",
+        "url": "https://example.com/images/samsung-galaxy-s21-1.jpg"
+      },
+      {
+        "public_id": "samsung-galaxy-s21-2",
+        "url": "https://example.com/images/samsung-galaxy-s21-2.jpg"
+      }
+    ],
+    "category": "Phone",
+    "seller": "Samsung Electronics",
+    "stock": 100,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Bose QuietComfort 35 II",
+    "price": 299.99,
+    "description": "Wireless noise-cancelling headphones with Alexa voice control.",
+    "ratings": 4.5,
+    "images": [
+      {
+        "public_id": "bose-quietcomfort-35-ii-1",
+        "url": "https://example.com/images/bose-quietcomfort-35-ii-1.jpg"
+      },
+      {
+        "public_id": "bose-quietcomfort-35-ii-2",
+        "url": "https://example.com/images/bose-quietcomfort-35-ii-2.jpg"
+      }
+    ],
+    "category": "Headphones",
+    "seller": "Bose Corporation",
+    "stock": 30,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Amazon Echo Dot (3rd Gen)",
+    "price": 39.99,
+    "description": "Smart speaker with Alexa voice control.",
+    "ratings": 4.4,
+    "images": [
+      {
+        "public_id": "amazon-echo-dot-3rd-gen-1",
+        "url": "https://example.com/images/amazon-echo-dot-3rd-gen-1.jpg"
+      },
+      {
+        "public_id": "amazon-echo-dot-3rd-gen-2",
+        "url": "https://example.com/images/amazon-echo-dot-3rd-gen-2.jpg"
+      }
+    ],
+    "category": "Home",
+    "seller": "Amazon.com, Inc.",
+    "stock": 150,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Levi's 501 Original Fit Jeans",
+    "price": 69.5,
+    "description": "Classic straight-leg jeans made from durable denim.",
+    "ratings": 4.2,
+    "images": [
+      {
+        "public_id": "levis-501-jeans-1",
+        "url": "https://example.com/images/levis-501-jeans-1.jpg"
+      },
+      {
+        "public_id": "levis-501-jeans-2",
+        "url": "https://example.com/images/levis-501-jeans-2.jpg"
+      }
+    ],
+    "category": "Clothes/Shoes",
+    "seller": "Levi Strauss & Co.",
+    "stock": 75,
+    "numOfReviews": 0,
+    "reviews": []
+  }
+]
