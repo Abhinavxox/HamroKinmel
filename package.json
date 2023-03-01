@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
-    "dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
-    "prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server",
+    "dev": "export NODE_ENV=DEVELOPMENT && nodemon backend/server",
+    "prod": "export NODE_ENV=PRODUCTION && nodemon backend/server",
     "seeder": "node backend/utils/seeder.js"
   },
   "author": "Abhinavxox",
