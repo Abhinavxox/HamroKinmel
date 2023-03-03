@@ -4,6 +4,7 @@ module.exports = (err, req, res, next) => {
   //if there is no statuscode just return 500 as internal server error
   err.statusCode = err.statusCode || 500;
 
+  //for development mode
   if (process.env.NODE_ENV === "DEVELOPMENT") {
     res.status(err.statusCode).json({
       success: false,
@@ -13,6 +14,7 @@ module.exports = (err, req, res, next) => {
     });
   }
 
+  //for production mode
   if (process.env.NODE_ENV === "PRODUCTION") {
     let error = { ...err };
 
