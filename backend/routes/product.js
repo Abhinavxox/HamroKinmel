@@ -8,6 +8,7 @@ const {
   updateProductById,
   deleteProductById,
 } = require("../controllers/productController");
+const { isAuthenticatedUser } = require("../middleware/auth");
 
 router.route("/products").get(getProducts);
 router.route("/product/:id").get(getProductById);
