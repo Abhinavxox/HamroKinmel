@@ -199,3 +199,73 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
     message: "Logged out succesfully",
   });
 });
+
+//Admin Routes
+
+//get all user (/api/v1/admin/users)
+exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
+  const users = await User.find();
+
+  res.status(200).json({
+    sucess: true,
+    users,
+  });
+});
+
+//get user by id (/api/v1/admin/user/:id)
+exports.getUserById = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    return next(
+      new ErrorHandler(`User not found with the id: ${req.params.id}`)
+    );
+  }
+
+  res.status(200).json({
+    sucess: true,
+    user,
+  });
+});
+
+//update user profile (/api/v1/admin/user/:id)
+exports.updateUser = catchAsyncErrors(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+
+  //update avatar
+
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  res.status(200).json({
+    succes: true,
+    user,
+  });
+});
+
+//delete(/api/v1/admin/user/:id)
+exports.deleteUserById = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    return next(
+      new ErrorHandler(`User not found with the id: ${req.params.id}`)
+    );
+  }
+
+  //remove avatar from cloudinary
+
+  await user.remove();
+
+  res.status(200).json({
+    sucess: true,
+    user,
+  });
+});
