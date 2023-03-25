@@ -2,6 +2,8 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./components//Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./components/layout/Login";
+import Signup from "./components/layout/Signup";
 
 function App() {
   return (
@@ -9,7 +11,9 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" Component={Home} />
+          <Route path="/" Component={Home} exact />
+          <Route path="/login" Component={Login} />
+          <Route path="/signup" Component={Signup} />
         </Routes>
         {/* <Footer /> */}
       </div>

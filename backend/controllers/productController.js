@@ -27,12 +27,13 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
   const products = await apiFeatures.query;
 
-  res.status(200).json({
-    success: true,
-    count: products.length,
-    productCount,
-    products,
-  });
+  setTimeout(() => {
+    res.status(200).json({
+      success: true,
+      productCount,
+      products,
+    });
+  }, 1000);
 });
 
 //get product by id (api/v1/product/:id)
@@ -90,6 +91,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
     rating: Number(rating),
     comment,
   };
+  [];
 
   const product = await Product.findById(productId);
 
