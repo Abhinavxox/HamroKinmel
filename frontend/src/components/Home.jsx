@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import Carousel from "./layout/Carousel";
 import Card from "./layout/Card";
-import W5 from "./../images/w5.jpg";
 import Sale from "./../images/sale.png";
-import { Oval } from "react-loader-spinner";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productActions";
+
+import { options } from "./alert/Alert";
+import { toast } from "react-toastify";
+import Loader from "./layout/Loader";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,11 @@ const Home = () => {
   );
 
   useEffect(() => {
+    if (error) {
+      return toast.error(error, options);
+    }
     dispatch(getProducts());
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   return (
     <>
@@ -36,11 +40,14 @@ const Home = () => {
         </div>
       </div>
       <div>
+        <div className="flex justify-center">
+          <div className="w-1/6 h-1 bg-gray-300 m-1"></div>
+        </div>
         <h2 className="text-2xl font-bold text-center mb-4">
           Featured Products
         </h2>
         {loading ? (
-          <h2 className="text-2xl font-bold text-center mb-4">Loading...</h2>
+          <Loader />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto max-w-7xl">
             {products &&
