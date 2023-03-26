@@ -15,7 +15,7 @@ function App() {
           <Route path="/" Component={Home} exact />
           <Route path="/login" Component={Login} />
           <Route path="/signup" Component={Signup} />
-          <Route path="/product/:id" Component={ProductDetail} />
+          <Route path="/product/:id" Component={ProductDetail} exact />
         </Routes>
         {/* <Footer /> */}
       </div>
