@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import StoreLogo from "../../images/store.png";
 import UserAvatar from "../../images/user.png";
 import CartIcon from "../../images/cart.png";
@@ -15,9 +14,6 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex-none">
-        <Routes>
-          <Route render={({ history }) => <SearchBar history={history} />} />
-        </Routes>
         <SearchBar />
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
