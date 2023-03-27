@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./layout/Card";
 import Sale from "./../images/sale.png";
 
@@ -8,20 +8,35 @@ import { getProducts } from "../actions/productActions";
 import { options } from "./alert/Alert";
 import { toast } from "react-toastify";
 import Loader from "./layout/Loader";
+import { useParams } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const { loading, products, error, productCount } = useSelector(
+  const { loading, products, error, productCount, resPerPage } = useSelector(
     (state) => state.products
   );
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(productCount / resPerPage);
+
+  const params = useParams();
+  const keyword = params.keyword;
+
+  const setCurrentPageNo = (action) => {
+    if (action === "next" && currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    } else if (currentPage > 1 && action === "prev") {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   useEffect(() => {
     if (error) {
       return toast.error(error, options);
     }
-    dispatch(getProducts());
-  }, [dispatch, error]);
+    dispatch(getProducts(currentPage));
+  }, [dispatch, error, currentPage]);
 
   return (
     <>
@@ -49,14 +64,33 @@ const Home = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto max-w-7xl">
-            {products &&
-              products.map((product) => (
-                <div className="w-full" key={product._id}>
-                  <Card item={product} />
-                </div>
-              ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto max-w-7xl">
+              {products &&
+                products.map((product) => (
+                  <div className="w-full" key={product._id}>
+                    <Card item={product} />
+                  </div>
+                ))}
+            </div>
+            <div className="flex justify-center m-5">
+              <div className="btn-group">
+                <button
+                  className="btn"
+                  onClick={() => setCurrentPageNo("prev")}
+                >
+                  «
+                </button>
+                <button className="btn">Page {currentPage}</button>
+                <button
+                  className="btn"
+                  onClick={() => setCurrentPageNo("next")}
+                >
+                  »
+                </button>
+              </div>
+            </div>
+          </>
         )}
       </div>
     </>

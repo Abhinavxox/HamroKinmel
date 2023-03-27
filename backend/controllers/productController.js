@@ -18,7 +18,7 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 //get all products (api/v1/products?keyword=apple)
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
   // return next(new ErrorHandler("My error", 404));
-  const resPerPage = 8;
+  const resPerPage = 5;
   const productCount = await Product.countDocuments();
   //to check for any query that comes with the req
   const apiFeatures = new APIFeatures(Product, req.query)
@@ -28,11 +28,16 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
   const products = await apiFeatures.query;
 
-  res.status(200).json({
-    success: true,
-    productCount,
-    products,
-  });
+  if (productCount != 0) {
+    res.status(200).json({
+      success: true,
+      productCount,
+      resPerPage,
+      products,
+    });
+  } else if (productCount == 0) {
+    return next(new ErrorHandler("No more items left", 404));
+  }
 });
 
 //get product by id (api/v1/product/:id)
