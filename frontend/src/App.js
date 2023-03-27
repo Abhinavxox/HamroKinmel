@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/layout/Login";
 import Signup from "./components/layout/Signup";
 import ProductDetail from "./components/layout/ProductDetail";
+import Categories from "./components/layout/Categories";
+import SearchPage from "./components/layout/SearchPage";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/" Component={Home} exact />
           <Route path="/login" Component={Login} />
           <Route path="/signup" Component={Signup} />
+          <Route path="/categories" Component={Categories} />
+          <Route path="/search/:searchQuery" Component={SearchPage} />
           <Route path="/product/:id" Component={ProductDetail} exact />
         </Routes>
         {/* <Footer /> */}
