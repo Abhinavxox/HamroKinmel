@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" Component={Login} />
           <Route path="/signup" Component={Signup} />
           <Route path="/categories" Component={Categories} />
-          <Route path="/search/:searchQuery" Component={SearchPage} />
+          <Route path="/search/:keyword" Component={SearchPage} />
           <Route path="/product/:id" Component={ProductDetail} exact />
         </Routes>
         {/* <Footer /> */}

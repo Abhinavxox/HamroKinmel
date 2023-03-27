@@ -20,9 +20,6 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(productCount / resPerPage);
 
-  const params = useParams();
-  const keyword = params.keyword;
-
   const setCurrentPageNo = (action) => {
     if (action === "next" && currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
