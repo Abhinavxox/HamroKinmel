@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Card from "./layout/Card";
 import Sale from "./../images/sale.png";
+import ProductView from "./layout/ProductView";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productActions";
@@ -8,7 +8,6 @@ import { getProducts } from "../actions/productActions";
 import { options } from "./alert/Alert";
 import { toast } from "react-toastify";
 import Loader from "./layout/Loader";
-import { useParams } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const Home = () => {
     if (error) {
       return toast.error(error, options);
     }
-    dispatch(getProducts(currentPage));
+    dispatch(getProducts(" ", currentPage));
   }, [dispatch, error, currentPage]);
 
   return (
@@ -62,15 +61,10 @@ const Home = () => {
           <Loader />
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto max-w-7xl">
-              {products &&
-                products.map((product) => (
-                  <div className="w-full" key={product._id}>
-                    <Card item={product} />
-                  </div>
-                ))}
+            <div className="w-full flex justify-center ">
+              <ProductView products={products} />
             </div>
-            <div className="flex justify-center m-5">
+            <div className="flex justify-center p-20">
               <div className="btn-group">
                 <button
                   className="btn"

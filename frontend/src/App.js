@@ -2,11 +2,11 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./components//Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./components/layout/Login";
-import Signup from "./components/layout/Signup";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import ProductDetail from "./components/layout/ProductDetail";
 import Categories from "./components/layout/Categories";
-import SearchPage from "./components/layout/SearchPage";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   return (

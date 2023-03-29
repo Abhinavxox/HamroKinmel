@@ -19,33 +19,6 @@ const Card = ({ item }) => {
           <h2 className="card-title">{item.name}</h2>
         </Link>
         <p>{item.price}</p>
-        {/* <div className="rating">
-          <input
-            type="radio"
-            name="rating-2"
-            className="mask mask-star-2 bg-orange-400"
-          />
-          <input
-            type="radio"
-            name="rating-2"
-            className="mask mask-star-2 bg-orange-400"
-          />
-          <input
-            type="radio"
-            name="rating-2"
-            className="mask mask-star-2 bg-orange-400"
-          />
-          <input
-            type="radio"
-            name="rating-2"
-            className="mask mask-star-2 bg-orange-400"
-          />
-          <input
-            type="radio"
-            name="rating-2"
-            className="mask mask-star-2 bg-orange-400"
-          />
-        </div> */}
         <Rating rating={item.ratings} />
         <div className="card-actions">
           <button className="btn btn-primary">
