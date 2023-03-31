@@ -4,7 +4,7 @@ import Card from "./Card";
 const ProductView = ({ products }) => {
   return (
     <>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap w-full">
         {products &&
           products.map((product) => (
             <div

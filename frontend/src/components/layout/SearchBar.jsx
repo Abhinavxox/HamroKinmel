@@ -16,7 +16,7 @@ const SearchBar = ({ history }) => {
   };
 
   return (
-    <div className="form-control">
+    <div className="form-control sm:hidden xl:inline">
       <input
         type="text"
         placeholder="Search"

@@ -12,8 +12,8 @@ import Loader from "./layout/Loader";
 const SearchPage = () => {
   const params = useParams();
   const keyword = params.keyword;
-  console.log(keyword);
-  const [priceRange, setPriceRange] = useState(40);
+  const [priceRange, setPriceRange] = useState(0);
+  console.log(priceRange);
 
   const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ const SearchPage = () => {
   );
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(productCount / resPerPage);
+  const totalPages = Math.ceil(products.length / resPerPage);
 
   const setCurrentPageNo = (action) => {
     if (action === "next" && currentPage < totalPages) {
@@ -37,16 +37,18 @@ const SearchPage = () => {
       return toast.error(error, options);
     }
     dispatch(getProducts(keyword, currentPage));
-  }, [dispatch, error, currentPage]);
+  }, [dispatch, error, currentPage, keyword]);
 
   const handlePriceRangeChange = (event) => {
-    setPriceRange(event.target.value);
+    if (event.type === "mouseup") {
+      setPriceRange(event.target.value);
+    }
   };
 
   return (
     <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
       <div className="flex justify-center items-center lg:flex-row flex-col gap-8">
-        <div className=" w-full sm:w-96 md:w-3/12  lg:w-4/12 ">
+        <div className=" w-full sm:w-96 md:w-1/12  lg:w-2/12 ">
           <ul className="menu bg-base-100 w-56 p-2 rounded-box">
             <li>
               <span>Price Range: $0-${priceRange}</span>
@@ -66,32 +68,41 @@ const SearchPage = () => {
               <span>Category</span>
             </li>
             <li>
-              <a>Item 1</a>
+              <a>Phone</a>
             </li>
             <li>
-              <a>Item 2</a>
+              <a>Laptop</a>
             </li>
             <li>
-              <a>Item 1</a>
+              <a>Camera</a>
             </li>
             <li>
-              <a>Item 2</a>
+              <a>Accessories</a>
             </li>
             <li>
-              <a>Item 1</a>
+              <a>Headphones</a>
             </li>
             <li>
-              <a>Item 2</a>
+              <a>Food</a>
             </li>
             <li>
-              <a>Item 1</a>
+              <a>Clothes/Shoes</a>
             </li>
             <li>
-              <a>Item 2</a>
+              <a>Beauty/Health</a>
+            </li>
+            <li>
+              <a>Sports</a>
+            </li>
+            <li>
+              <a>Outdoor</a>
+            </li>
+            <li>
+              <a>Home</a>
             </li>
           </ul>
         </div>
-        <div className="  w-full sm:w-96 md:w-9/12 lg:w-8/12 items-center">
+        <div className="  w-full sm:w-96 md:w-11/12 lg:w-10/12 items-center">
           {/* right */}
           <div className="w-full flex justify-center">
             <ProductView products={products} />
