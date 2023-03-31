@@ -10,6 +10,7 @@ import {
   CLEAR_ERRORS,
 } from "../constants/productConstant";
 
+//get all products
 export const getProducts =
   (keyword = "", currentPage = 1, price = [0, 6000], rating = 0, category) =>
   async (dispatch) => {
@@ -36,6 +37,7 @@ export const getProducts =
     }
   };
 
+//single product by id
 export const getProductDetail = (id) => async (dispatch) => {
   try {
     dispatch({

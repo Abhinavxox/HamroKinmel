@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, login } from "../actions/userActions";
+
+import { options } from "./alert/Alert";
+import { toast } from "react-toastify";
+import Loader from "./layout/Loader";
+
 const Login = () => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (error) {
+      dispatch(clearErrors());
+      return toast.error(error, options);
+    }
+  }, [dispatch, error, isAuthenticated]);
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
