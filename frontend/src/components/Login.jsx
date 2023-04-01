@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login } from "../actions/userActions";
@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import Loader from "./layout/Loader";
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,10 +18,24 @@ const Login = () => {
     (state) => state.auth
   );
 
+  const loginUser = () => {
+    //validation email regex and password
+    if (!email || !password) {
+      toast.error("Please fill in all fields", options);
+      return;
+    }
+
+    dispatch(login(email, password));
+  };
+
   useEffect(() => {
     if (error) {
       dispatch(clearErrors());
-      return toast.error(error, options);
+      toast.error(error, options);
+    }
+    if (isAuthenticated) {
+      toast.success("Successfully logged in", options);
+      navigate("/");
     }
   }, [dispatch, error, isAuthenticated]);
 
@@ -37,6 +52,8 @@ const Login = () => {
                 type="text"
                 placeholder="email"
                 className="input input-bordered"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="form-control">
@@ -47,6 +64,8 @@ const Login = () => {
                 type="text"
                 placeholder="password"
                 className="input input-bordered"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
@@ -55,7 +74,9 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary" onClick={() => loginUser()}>
+                Login
+              </button>
             </div>
             <div className="text-grey-dark text-center mt-6">
               Don't have an account?
