@@ -20,7 +20,7 @@ const Header = () => {
     toast.success("Logged out successfully", options);
   };
   return (
-    <div className="navbar bg-base-100 fixed">
+    <div className="navbar bg-base-100">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           HamroKinmel
@@ -72,25 +72,22 @@ const Header = () => {
                 <img src={user.avatar && user.avatar.url} alt={user.name} />
               </div>
             </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <h1>Hi, {user.name}</h1>
-              </li>
-              <li>
-                <Link>Profile</Link>
-              </li>
-              <li>
-                <Link>Orders</Link>
-              </li>
-              <li>
-                <Link to="/" onClick={() => logoutHandler()}>
-                  Logout
-                </Link>
-              </li>
-            </ul>
+            <div className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <h1 className="text-center">Hi, {user.name}</h1>
+              <ul tabIndex={0}>
+                <li>
+                  <Link to="/profile">Profile</Link>
+                </li>
+                <li>
+                  <Link>Orders</Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={() => logoutHandler()}>
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         ) : (
           <button className="btn btn-ghost">
