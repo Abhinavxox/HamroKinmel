@@ -4,6 +4,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const cloudinary = require("cloudinary");
 
 //register new user (/api/v1/register)
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -14,8 +15,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     email,
     password,
     avatar: {
-      public_id: "avatars/kccxqjyqjyqjyqjyqjyq",
-      url: "https://res.cloudinary.com/dxqjyqjyqjyqjyqjyq/image/upload/v1620000000/avatars/kccxqjyqjyqjyqjyqjyq.png",
+      public_id: "avatars/user.png",
+      url: "https://res.cloudinary.com/hamrokinmel/image/upload/v1680426768/Avatars/user.png",
     },
   });
 

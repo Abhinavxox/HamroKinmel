@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import StoreLogo from "../../images/store.png";
 import UserAvatar from "../../images/user.png";
-import CartIcon from "../../images/cart.png";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../actions/userActions";
+
+import { options } from ".././alert/Alert";
+import { toast } from "react-toastify";
+import Loader from ".././layout/Loader";
+
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const { user, loading } = useSelector((state) => state.auth);
+
+  const logoutHandler = () => {
+    dispatch(logoutUser());
+    toast.success("Logged out successfully", options);
+  };
   return (
     <div className="navbar bg-base-100 fixed">
       <div className="flex-1">
@@ -43,32 +56,47 @@ const Header = () => {
               <span className="font-bold text-lg">0 Items</span>
               <span className="text-info">Subtotal: $0</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
+                <Link to="/cart">
+                  <button className="btn btn-primary btn-block">
+                    View cart
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src={UserAvatar} />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src={user.avatar && user.avatar.url} alt={user.name} />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <h1>Hi, {user.name}</h1>
+              </li>
+              <li>
+                <Link>Profile</Link>
+              </li>
+              <li>
+                <Link>Orders</Link>
+              </li>
+              <li>
+                <Link to="/" onClick={() => logoutHandler()}>
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <button className="btn btn-ghost">
+            <Link to="/login">Login</Link>
+          </button>
+        )}
       </div>
     </div>
   );
