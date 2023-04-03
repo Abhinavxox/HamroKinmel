@@ -23,13 +23,15 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" Component={Home} exact />
-          <ProtectedRoute path="/login" Component={Login} />
-          <ProtectedRoute path="/signup" Component={Signup} />
-          <ProtectedRoute path="/profile" Component={Profile} />
-          <Route path="/categories" Component={Categories} />
-          <Route path="/search/:keyword" Component={SearchPage} />
-          <Route path="/product/:id" Component={ProductDetail} exact />
+          <Route path="/" element={<Home />} exact />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          {/* <Route path="/" element={<ProtectedRoute />}> */}
+          <Route path="/profile" element={<Profile />} />
+          {/* </Route> */}
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/search/:keyword" element={<SearchPage />} />
+          <Route path="/product/:id" element={<ProductDetail />} exact />
         </Routes>
         {/* <Footer /> */}
       </div>

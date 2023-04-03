@@ -1,23 +1,10 @@
+import { Children, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, redirect } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const { isAuthenticated, loading, user } = useSelector((state) => state.auth);
-  return (
-    <>
-      {loading === false && (
-        <Route
-          {...rest}
-          render={(props) => {
-            if (isAuthenticated === false) {
-              return redirect("/login");
-            }
-            return <Component {...props} />;
-          }}
-        />
-      )}
-    </>
-  );
+const ProtectedRoute = () => {
+  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;
