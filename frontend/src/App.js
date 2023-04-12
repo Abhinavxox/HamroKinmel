@@ -26,9 +26,14 @@ function App() {
           <Route path="/" element={<Home />} exact />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          {/* <Route path="/" element={<ProtectedRoute />}> */}
-          <Route path="/profile" element={<Profile />} />
-          {/* </Route> */}
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/categories" element={<Categories />} />
           <Route path="/search/:keyword" element={<SearchPage />} />
           <Route path="/product/:id" element={<ProductDetail />} exact />
