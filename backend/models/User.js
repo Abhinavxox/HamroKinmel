@@ -23,13 +23,10 @@ const userSchema = new mongoose.Schema({
     select: false,
   },
   avatar: {
-    public_id: {
+    src: {
       type: String,
-      required: true,
-    },
-    url: {
-      type: String,
-      required: true,
+      default:
+        "https://res.cloudinary.com/hamrokinmel/image/upload/v1680426768/Avatars/user.png",
     },
   },
   role: {

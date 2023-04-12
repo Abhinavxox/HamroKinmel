@@ -12,21 +12,23 @@ const Profile = () => {
   return (
     <>
       {loading ? (
-        ""
+        <Loader />
       ) : (
         <div classNameName="m-2">
           <div className="xl:mx-auto xl:container">
             <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8">
               <div className="flex flex-col-reverse lg:flex-row items-center">
                 <div className="w-full lg:w-1/2 md:py-9 py-6">
-                  <img
-                    src={user.avatar && user.avatar.url}
-                    alt="avatar"
-                    className=" rounded-full h-full object-cover object-center w-full my-5"
-                  />
+                  <div className="w-full flex justify-center">
+                    <img
+                      src={user.avatar && user.avatar.src}
+                      alt="avatar"
+                      className=" rounded-full h-96 w-96 my-5"
+                    />
+                  </div>
 
-                  <div className="md:block lg:flex items-center justify-center">
-                    <button className="lg:w-auto w-full btn btn-primary">
+                  <div className=" flex items-center justify-center">
+                    <button className="lg:w-auto w-auto btn btn-primary">
                       Edit Profile
                     </button>
                   </div>

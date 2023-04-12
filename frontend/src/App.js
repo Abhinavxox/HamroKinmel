@@ -29,9 +29,9 @@ function App() {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <Profile />
+              // </ProtectedRoute>
             }
           />
           <Route path="/categories" element={<Categories />} />
