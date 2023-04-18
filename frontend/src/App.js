@@ -13,6 +13,7 @@ import store from "./store";
 import { useEffect } from "react";
 import Profile from "./components/Profile";
 import ProtectedRoute from "./components/route/ProtectedRoute";
+import UpdatePassword from "./components/UpdatePassword";
 
 function App() {
   useEffect(() => {
@@ -35,6 +36,7 @@ function App() {
               // </ProtectedRoute>
             }
           />
+          <Route path="/password/update" element={<UpdatePassword />} />
           <Route path="/update" element={<UpdateProfile />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/search/:keyword" element={<SearchPage />} />

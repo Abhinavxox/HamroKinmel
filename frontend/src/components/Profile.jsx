@@ -59,9 +59,11 @@ const Profile = () => {
                     </p>
                   </div>
                   <div className="md:block lg:flex items-center justify-center">
-                    <button className="lg:w-auto w-full btn btn-secondary">
-                      Change Password
-                    </button>
+                    <Link to="/password/update">
+                      <button className="lg:w-auto w-full btn btn-secondary">
+                        Change Password
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
