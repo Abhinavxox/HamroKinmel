@@ -31,12 +31,6 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   });
 
   sendToken(user, 201, res);
-  // const token = user.getJWTToken();
-
-  // res.status(201).json({
-  //   success: true,
-  //   token,
-  // });
 });
 
 //login user (/api/v1/login)
@@ -178,13 +172,16 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 //update user profile (/api/v1/me/update)
-exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
+exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
+    avatar: {
+      src: req.body.avatar,
+    },
   };
 
-  //update avatar
+  console.log("HII im here");
 
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,

@@ -9,9 +9,10 @@ const {
   resetPassword,
   getUserProfile,
   updatePassword,
+  updateProfile,
+  updateUser,
   getAllUsers,
   getUserById,
-  updateUser,
   deleteUserById,
 } = require("../controllers/userController");
 
@@ -24,7 +25,7 @@ router.route("/password/update").put(isAuthenticatedUser, updatePassword);
 router.route("/password/reset/:token").put(resetPassword);
 router.route("/logout").get(logout);
 router.route("/me").get(isAuthenticatedUser, getUserProfile);
-router.route("/me/update").put(isAuthenticatedUser, updatePassword);
+router.route("/me/update").put(isAuthenticatedUser, updateProfile);
 router
   .route("/admin/users")
   .get(isAuthenticatedUser, authorizeRoles("admin"), getAllUsers);

@@ -1,20 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../actions/productActions";
+import { Link } from "react-router-dom";
 
 import { options } from "./alert/Alert";
 import { toast } from "react-toastify";
 import Loader from "./layout/Loader";
 
 const Profile = () => {
-  const dispatch = useDispatch();
-
   const { user, loading } = useSelector((state) => state.auth);
   return (
     <>
       {loading ? (
         <Loader />
       ) : (
-        <div classNameName="m-2">
+        <div className="m-2">
           <div className="xl:mx-auto xl:container">
             <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8">
               <div className="flex flex-col-reverse lg:flex-row items-center">
@@ -28,9 +26,11 @@ const Profile = () => {
                   </div>
 
                   <div className=" flex items-center justify-center">
-                    <button className="lg:w-auto w-auto btn btn-primary">
-                      Edit Profile
-                    </button>
+                    <Link to="/update">
+                      <button className="lg:w-auto w-auto btn btn-primary">
+                        Edit Profile
+                      </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="lg:w-1/2 lg:pl-12 lg:pr-24">

@@ -4,6 +4,7 @@ import Home from "./components//Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import UpdateProfile from "./components/UpdateProfile";
 import ProductDetail from "./components/layout/ProductDetail";
 import Categories from "./components/layout/Categories";
 import SearchPage from "./components/SearchPage";
@@ -34,6 +35,7 @@ function App() {
               // </ProtectedRoute>
             }
           />
+          <Route path="/update" element={<UpdateProfile />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/search/:keyword" element={<SearchPage />} />
           <Route path="/product/:id" element={<ProductDetail />} exact />

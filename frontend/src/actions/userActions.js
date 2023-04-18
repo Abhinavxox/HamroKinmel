@@ -10,7 +10,6 @@ import {
   LOAD_USER_REQUEST,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_REQUEST,
-  UPDATE_PROFILE_RESET,
   UPDATE_PROFILE_FAIL,
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
@@ -122,12 +121,15 @@ export const updateUser = (userData) => async (dispatch) => {
       type: UPDATE_PROFILE_REQUEST,
     });
 
+    // for (var pair of userData.entries()) {
+    //   console.log(pair[0] + " - " + pair[1]);
+    // }
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     };
-    const { data } = await axios.post("/api/v1/me/update", userData, config);
+    const { data } = await axios.put("/api/v1/me/update", userData, config);
 
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
