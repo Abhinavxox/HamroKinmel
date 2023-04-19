@@ -121,6 +121,12 @@ export const logoutUser = () => async (dispatch) => {
 //update user
 export const updateUser = (userData) => async (dispatch) => {
   try {
+    if (userData === "reset") {
+      dispatch({
+        type: UPDATE_PROFILE_RESET,
+      });
+      return;
+    }
     dispatch({
       type: UPDATE_PROFILE_REQUEST,
     });
@@ -137,7 +143,7 @@ export const updateUser = (userData) => async (dispatch) => {
 
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
-      payload: data.success,
+      payload: data,
     });
   } catch (error) {
     dispatch({

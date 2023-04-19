@@ -11,9 +11,9 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, loading, error, isAuthenticated } = useSelector(
-    (state) => state.auth
-  );
+  const { user, loading, error } = useSelector((state) => state.auth);
+
+  const { isUpdated } = useSelector((state) => state.user);
 
   const [userData, setUser] = useState({
     name: user.name,
@@ -50,9 +50,6 @@ const UpdateProfile = () => {
     formData.append("email", email);
     formData.append("avatar", avatar);
 
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + " - " + pair[1]);
-    // }
     dispatch(updateUser(formData));
   };
 
@@ -61,11 +58,12 @@ const UpdateProfile = () => {
       dispatch(clearErrors());
       toast.error(error, options);
     }
-    // if (isAuthenticated) {
-    //   toast.success("Successfully updated user ", options);
-    //   navigate("/profile");
-    // }
-  }, [dispatch, error, isAuthenticated, avatar]);
+    if (isUpdated && isUpdated.success) {
+      toast.success("Successfully updated user ", options);
+      dispatch(updateUser("reset"));
+      navigate("/profile");
+    }
+  }, [dispatch, error, isUpdated, avatar]);
 
   return (
     <>
@@ -90,7 +88,7 @@ const UpdateProfile = () => {
                       name="avatar"
                       id="customFile"
                       accept="images/*"
-                      onChange={() => onChange()}
+                      onChange={onChange}
                     />
                   </div>
                 </div>

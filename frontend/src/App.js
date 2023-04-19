@@ -14,37 +14,61 @@ import { useEffect } from "react";
 import Profile from "./components/Profile";
 import ProtectedRoute from "./components/route/ProtectedRoute";
 import UpdatePassword from "./components/UpdatePassword";
+import { useSelector } from "react-redux";
+import Loader from "./components/layout/Loader";
 
 function App() {
+  const { loading } = useSelector((state) => state.auth);
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} exact />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/profile"
-            element={
-              // <ProtectedRoute>
-              <Profile />
-              // </ProtectedRoute>
-            }
-          />
-          <Route path="/password/update" element={<UpdatePassword />} />
-          <Route path="/update" element={<UpdateProfile />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/search/:keyword" element={<SearchPage />} />
-          <Route path="/product/:id" element={<ProductDetail />} exact />
-        </Routes>
-        {/* <Footer /> */}
-      </div>
-    </BrowserRouter>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <BrowserRouter>
+          <div className="App">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} exact />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route
+                path="/profile"
+                element={
+                  // <ProtectedRoute>
+                  <Profile />
+                  // </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/password/update"
+                element={
+                  // <ProtectedRoute>
+                  <UpdatePassword />
+                  // </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/update"
+                element={
+                  // <ProtectedRoute>
+                  <UpdateProfile />
+                  // </ProtectedRoute>
+                }
+              />
+
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/search/:keyword" element={<SearchPage />} />
+              <Route path="/product/:id" element={<ProductDetail />} exact />
+            </Routes>
+            {/* <Footer /> */}
+          </div>
+        </BrowserRouter>
+      )}
+    </>
   );
 }
 
