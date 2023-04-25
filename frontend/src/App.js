@@ -16,6 +16,7 @@ import ProtectedRoute from "./components/route/ProtectedRoute";
 import UpdatePassword from "./components/UpdatePassword";
 import { useSelector } from "react-redux";
 import Loader from "./components/layout/Loader";
+import ForgotPassword from "./components/ForgotPassword";
 
 function App() {
   const { loading } = useSelector((state) => state.auth);
@@ -61,8 +62,10 @@ function App() {
               />
 
               <Route path="/categories" element={<Categories />} />
+              <Route path="/password/forgot" element={<ForgotPassword />} />
               <Route path="/search/:keyword" element={<SearchPage />} />
               <Route path="/product/:id" element={<ProductDetail />} exact />
+              {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
             {/* <Footer /> */}
           </div>

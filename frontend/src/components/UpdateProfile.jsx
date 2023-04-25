@@ -117,7 +117,7 @@ const UpdateProfile = () => {
                     type="text"
                     placeholder="Email"
                     className="input input-bordered"
-                    name="password"
+                    name="email"
                     onChange={onChange}
                     value={userData.email}
                   />

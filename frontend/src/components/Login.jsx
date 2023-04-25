@@ -68,9 +68,11 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
+                <Link to="/password/forgot">
+                  <a className="label-text-alt link link-hover">
+                    Forgot password?
+                  </a>
+                </Link>
               </label>
             </div>
             <div className="form-control mt-6">
