@@ -1,6 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, updatePassword } from "../actions/userActions";
+
+import { options } from "./alert/Alert";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const UpdatePassword = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  const { isUpdated, error } = useSelector((state) => state.user);
+
+  const change = () => {
+    //validation email regex and password
+    if (!oldPassword || !newPassword) {
+      toast.error("Please fill in all fields", options);
+      return;
+    }
+
+    dispatch(
+      updatePassword({
+        oldPassword: oldPassword,
+        password: newPassword,
+      })
+    );
+  };
+
+  useEffect(() => {
+    if (error) {
+      dispatch(clearErrors());
+      toast.error(error, options);
+    }
+    if (isUpdated) {
+      toast.success("Successfully updated password", options);
+      navigate("/profile");
+    }
+  }, [dispatch, error, isUpdated]);
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
@@ -16,6 +55,8 @@ const UpdatePassword = () => {
                   type="text"
                   placeholder="old password"
                   className="input input-bordered"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
                 />
               </div>
 
@@ -27,11 +68,15 @@ const UpdatePassword = () => {
                   type="text"
                   placeholder="new password"
                   className="input input-bordered"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
                 />
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Change Password</button>
+                <button className="btn btn-primary" onClick={() => change()}>
+                  Change Password
+                </button>
               </div>
             </div>
           </div>

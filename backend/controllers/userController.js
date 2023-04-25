@@ -181,8 +181,6 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     },
   };
 
-  console.log("HII im here");
-
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidators: true,

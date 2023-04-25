@@ -13,9 +13,9 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, loading, error } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.auth);
 
-  const { isUpdated } = useSelector((state) => state.user);
+  const { isUpdated, error } = useSelector((state) => state.user);
 
   const [userData, setUser] = useState({
     name: user.name,
