@@ -6,6 +6,8 @@ import { clearErrors, updateUser } from "../actions/userActions";
 import { options } from "./alert/Alert";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import store from "../store";
+import { loadUser } from "../actions/userActions";
 
 const UpdateProfile = () => {
   const navigate = useNavigate();
@@ -61,6 +63,7 @@ const UpdateProfile = () => {
     if (isUpdated && isUpdated.success) {
       toast.success("Successfully updated user ", options);
       dispatch(updateUser("reset"));
+      store.dispatch(loadUser());
       navigate("/profile");
     }
   }, [dispatch, error, isUpdated, avatar]);
