@@ -30,7 +30,14 @@ const ProductDetail = () => {
   const [count, setCount] = useState(0);
 
   const addCount = () => {
-    setCount((prev) => prev + 1);
+    setCount((prev) => {
+      if (prev + 1 <= product.stock) {
+        return prev + 1;
+      } else {
+        toast.warning("Stock completed", options);
+        return prev;
+      }
+    });
   };
 
   const minusCount = () => {
