@@ -10,8 +10,6 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
-// console.log(a);
-
 //setting up config file
 dotenv.config({ path: "backend/config/config.env" });
 
